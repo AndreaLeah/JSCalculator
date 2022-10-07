@@ -20,15 +20,33 @@ body {
 .calculator-screen {
     background-color: white;
     height: 200px;
-    width: 450px;
+    width: 410px;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: inset rgba(0, 0, 0, 0.24) 0px 5px 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-div {
+    width: 100%;
+    height: 100%;
+    text-align: right;
+}
+
+.bottom-div {
+    width: 100%;
+    justify-self: flex-end;
+    font-size: 42px;
+    font-weight: bold;
+    text-align: right;
+    overflow: hidden;
 }
 
 /* Button Container */
-.calculator-button-container {
+.calc-btns{
     display: flex;
     flex-wrap: wrap;
     height: 425px;
@@ -37,7 +55,9 @@ body {
 }
 
 /* Individual Buttons */
-.button {
+button {
+    border: none;
+    cursor: pointer;
     font-size: 24px;
     flex: 1 1 24.15%;
     display: flex;
@@ -46,28 +66,35 @@ body {
     background-color: white;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 8px;
+    cursor: pointer;
 }
 
-/* Delete Icon */
-.delete-icon {
+/* Clear Icon */
+.clear img {
     height: auto;
     width: 20px;
 }
 
 /* Backspace Icon */
-.backspace-icon {
+#delete img {
     height: auto;
     width: 20px;
 }
 
 /* Superscript Icon */
-.superscript-icon {
+#exponent img {
     height: auto;
     width: 20px;
+    pointer-events:none;
 }
 
 /* Division Icon */
-.division-icon {
+#divide img {
     height: auto;
     width: 20px;
+    pointer-events:none;
+}
+
+.exp, .divi {
+    font-size: 0;
 }

@@ -10,30 +10,39 @@
 <body>
     <div class="calculator-container">
         <div class="calculator-body">
-            <div class="calculator-screen"></div>
-            <div class="calculator-button-container">
-                    <div class="button"><img src="/Icons/delete.icon.png" class="delete-icon"></div>
-                    <div class="button"><img src="/Icons/backspace.icon.png" class="backspace-icon"></div>
-                    <div class="button"><img src="/Icons/superscript.icon.png" class="superscript-icon"></div>
-                    <div class="button"><img src="/Icons/division.icon.png" class="division-icon"></div>
-                    <div class="button">7</div>
-                    <div class="button">8</div>
-                    <div class="button">9</div>
-                    <div class="button">x</div>
-                    <div class="button">4</div>
-                    <div class="button">5</div>
-                    <div class="button">6</div>
-                    <div class="button">-</div>
-                    <div class="button">1</div>
-                    <div class="button">2</div>
-                    <div class="button">3</div>
-                    <div class="button">..</div>
-                    <div class="button">0</div>
-                    <div class="button">.</div>
-                    <div class="button">=</div>
-                    <div class="button">+</div>
+            <div class="calculator-screen">
+                <div class="top-div"></div>
+                <div class="bottom-div"></div>
+            </div>
+            <div class="calc-btns">
+
+                    <button class="clear" ><img src="/Icons/delete.icon.png"></button>
+
+                    <button id="delete"><img src="/Icons/backspace.icon.png"></button>
+
+                    <button class="exp" id="exponent"><img src="/Icons/superscript.icon.png">^</button>
+
+                    <button class="divi" id="divide"><img src="/Icons/division.icon.png">÷</button>
+
+                    <button class="num">7</button>
+                    <button class="num">8</button>
+                    <button class="num">9</button>
+                    <button id="multiply">x</button>
+                    <button class="num">4</button>
+                    <button class="num">5</button>
+                    <button class="num">6</button>
+                    <button id="subtract">-</button>
+                    <button class="num">1</button>
+                    <button class="num">2</button>
+                    <button class="num">3</button>
+                    <button class="">..</button>
+                    <button class="num">0</button>
+                    <button class="decimal">.</button>
+                    <button id="equals">=</button>
+                    <button id="add">+</button>
             </div>
         </div>
     </div>
+    <script rel="text/javascript" src="main.js"></script>
 </body>
 </html>
