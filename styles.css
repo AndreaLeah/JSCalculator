@@ -124,6 +124,7 @@ button:active {
     height: auto;
     width: 45px;
     filter: invert(100%);
+    opacity: 0.9;
 }
 
 /* Superscript Icon */

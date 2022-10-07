@@ -6,7 +6,7 @@ Vanilla JS Calculator with CSS Grid and Flexbox. The calculator is responsive to
 
 <br>
 
-![GIPHY Link](https://media.giphy.com/media/5J4qZ3Z5IQkSDnWAkV/giphy.gif)
+![GIPHY Link](https://media.giphy.com/media/fwmNMhzauSpBdoFMTa/giphy.gif)
 
 <br>
 
