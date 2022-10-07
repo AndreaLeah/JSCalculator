@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Calculator</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,23 +12,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="test"></div>
+
+<div class="container">
     <div class="calculator-container">
+        <div>
+            <img src="/Icons/geometric-shape.png" class="test invert">
+        </div>
         <div class="calculator-body">
             <div class="calculator-screen">
-                <div class="top-div"></div>
-                <div class="bottom-div"></div>
+                    <div class="top-div"></div>
+                    <div class="bottom-div"></div>
             </div>
             <div class="calc-btns">
-              
                     <button class="clear">C</button>
-
                     <button id="delete"><img src="/Icons/backspace.icon.png"></button>
-
-                    <button class="exp" id="exponent"><img src="/Icons/superscript.icon.png">^</button>
-
+                    <button class="exp" id="exponent">^</button>
                     <button class="divi" id="divide">/</button>
-
                     <button class="num">7</button>
                     <button class="num">8</button>
                     <button class="num">9</button>
@@ -37,24 +36,21 @@
                     <button class="num">5</button>
                     <button class="num">6</button>
                     <button id="subtract">-</button>
-
-          
-           
                     <button class="num">1</button>
                     <button class="num">2</button>
                     <button class="num">3</button>
-        
-                
                     <button class="num">0</button>
                     <button class="decimal">.</button>
                     <button id="equals">=</button>
-        
                     <button id="add">+</button>
-        
-    
             </div>
         </div>
+        <div class="info">
+            Built by <a href="https://github.com/AndreaLeah" target="_blank" class="name">AndreaLeah</a> | <a href="https://github.com/AndreaLeah/JSCalculator" target="_blank" class="code-link">Source Code</a>
+        </div>
     </div>
+ </div>
+
     <script rel="text/javascript" src="main.js"></script>
 </body>
 </html>

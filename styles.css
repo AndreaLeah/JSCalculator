@@ -1,21 +1,25 @@
 body {
     display: flex;
     justify-content: center;
-    padding-top: 100px;
     background: linear-gradient(45deg, #98AAE9 5%, #F0B3BC 75%);
     background-repeat: no-repeat;
-    padding-top: 100px;
+    padding-top: 125px;
     height: 100%;
     background-attachment: fixed;
 }
 
 .test {
-    background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: auto;
+    position: absolute;
+     left: -140px;
+    top: -120px;
+}
+
+.invert { filter: invert(100%); }
+
+.calculator-container {
     position: relative;
-    left: 60px;
-    bottom: 20px;
 }
 
 /* Calculator Body */
@@ -25,22 +29,25 @@ body {
     align-items: center;
     background-color: rgb(255, 255, 255, 0.15);
     border: solid 2px rgb(255, 255, 255, 0.25);
-    height: 800px;
-    width: 550px;
+    /* height: 800px;
+    width: 550px; */
+    height: 500px;
+    width: 300px;
     border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 8px;
-    padding: 30px 20px;
-    backdrop-filter: blur(20px);
+    box-shadow: rgba(0, 0, 0, .1) -7px 3px 10px;
+    backdrop-filter: blur(10px);
+    padding: 1%;
 }
 
 /* Calculator Screen Container */
 .calculator-screen {
     margin: 0% 2%;
-    height: 30%;
+    height: 34%;
     width: 90%;
-    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
+    color: #fff6f9;
+    font-family: 'Poppins', sans-serif;
 
 }
 
@@ -48,14 +55,15 @@ body {
     width: 100%;
     height: 100%;
     text-align: right;
-    font-size: 28px;;
+    font-size: 20px;
 }
 
 .bottom-div {
     width: 100%;
     height: 50%;
     justify-self: flex-end;
-    font-size: 70px;
+    /* font-size: 70px; */
+    font-size: 35px;
     font-weight: bold;
     text-align: right;
     overflow: hidden;
@@ -63,8 +71,9 @@ body {
 
 /* Button Container */
 .calc-btns{
+    pointer-events:none;
     background-color: transparent;
-    height: 70%;
+    height: 60%;
     width: 100%;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
@@ -79,6 +88,7 @@ body {
 
 /* Individual Buttons */
 button {
+    pointer-events: all;
     color: #fff6f9;
     border: none;
     cursor: pointer;
@@ -94,12 +104,13 @@ button {
 button:hover {
     color: #fff6f9;
     background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 30px;
 }
 
 button:active {
     border-radius: 30px;
-    box-shadow: 3px 5px #666;
-    transform: translateY(-4px);
+    box-shadow: 3px 4px rgb(255, 255, 255, 0.2);
+    transform: translateY(4px);;
 }
 
 /* Clear Icon */
@@ -111,7 +122,8 @@ button:active {
 /* Backspace Icon */
 #delete img {
     height: auto;
-    width: 20px;
+    width: 45px;
+    filter: invert(100%);
 }
 
 /* Superscript Icon */
@@ -128,10 +140,6 @@ button:active {
     pointer-events:none;
 }
 
-.exp {
-    font-size: 0;
-}
-
 /* Add Button */
 #add {
     grid-row-start:4;
@@ -141,4 +149,35 @@ button:active {
 
 #add:hover {
     border-radius: 30px;
+}
+
+.divi {
+    font-size: 24px;;
+}
+
+.info {
+    margin-top: 10px;;
+    font-family: 'Poppins', sans-serif;
+    color: #fff6f9;
+    font-size: 18px;
+}
+
+.name {
+    color:rgb(230, 227, 227);
+}
+
+.name:hover {
+    color: rgb(238, 238, 238);
+}
+
+.code-link {
+    color: #fff6f9;
+}
+
+.code-link:hover {
+    color:rgba(231, 231, 231);
+}
+
+.info a {
+    text-decoration: none;
 }

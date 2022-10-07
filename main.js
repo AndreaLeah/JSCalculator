@@ -15,7 +15,8 @@ let operandSymbol = '';
 let prevClass = 'num';
 let prevOperand = false;
 let prevEqual = false;
-decimalPresent = false;
+let decimalPresent = false;
+let equalBtn = document.querySelector('#equals');
 let calculation = {
     'add': function(num1, num2){return num1 + num2},
     'subtract': function(num1, num2){return num1 - num2},
@@ -25,6 +26,9 @@ let calculation = {
  }
 
 function recordEvent(e) {
+    console.log(`This is num1 at beginning of iteration: ${num1}`);
+    console.log(`This is num2 at beginning of iteration: ${num2}`);
+    console.log(`This is the prevOperand at beginning of iteration: ${prevOperand}`);
     if (e.type === 'click') {
         // Button Pressed Variables
         btnText = e.target.innerText;
@@ -34,7 +38,7 @@ function recordEvent(e) {
         btnText = e.key;
         console.log(`This is btnText: ${btnText}`)
         console.log(e);
-        if (e.key === "0", "1", "2", "3", "4", "5", "6", "7", "8", "9") {
+        if (e.key === "0" || e.key ===  "1" || e.key ===  "2" || e.key ===  "3" || e.key ===  "4" || e.key ===  "5" || e.key ===  "6" || e.key ===  "7" || e.key ===  "8" || e.key ===  "9") {
             class_ = 'num';
             id_ = '';
         }
@@ -47,21 +51,27 @@ function recordEvent(e) {
             else if (e.key === "-") {
                 id_ = "subtract";
             }
-            else if (e.key = "*") {
+            else if (e.key === "*") {
                 id_ = "multiply";
             }
+            else if (e.key === "/") {
+                id_ = "divide";
+                class_ = "divi";
+            }
             else if (e.key === 'Backspace') {
-                id_ === 'delete';
+                id_ = 'delete';
                 backspaceEvent();
-            }}
+            } else if (e.key === 'Enter') {
+                id_ = 'equals';
+                btnText = '=';
+            }
+        }
     }
     bottomDivText = document.createTextNode(btnText);
-    console.log(`This is btnText after: ${btnText}`);
-    console.log(`This is the current class: ${class_}`)
+    console.log(`This is btnText: ${btnText}`);
+    console.log(`This is the current class: ${class_}`);
+    console.log(`This is the current id: ${id_}`);
     console.log(e.target);
-    console.log(e);
-    console.log(class_);
-    console.log(id_)
 
     if (class_ === 'clear' || id_ === 'delete') {
         return;
@@ -72,6 +82,9 @@ function recordEvent(e) {
         operand = id_;
         operandSymbol = e.target.innerText;
         num = false;
+        if (e.type !== 'click') {
+            operandSymbol = btnText;
+        }
     }
 
     if (class_ === 'num') {
@@ -79,16 +92,20 @@ function recordEvent(e) {
         operandPressed = false;
     }
 
-    if (num && !operand) {
+    if (operand === 'equals' && !prevOperand) {
+        return;
+    }
+
+    else if (num && !operand) {
+        console.log('Num pressed & no previous operand')
         if (e.target.innerText === '.' && decimalPresent){
             return;
         } else {
-        console.log('Num && No Operand')
         bottomDiv.innerText += btnText;
     }}
 
     else if (operandPressed && !prevOperand) {
-        console.log('Operand Pressed')
+        console.log('Operand Pressed & no previous operand');
         topDiv.innerText = `${bottomDiv.innerText} ${operandSymbol} `;
         num1 = parseFloat(bottomDiv.innerText);
         decimalPresent = false;
@@ -99,27 +116,29 @@ function recordEvent(e) {
         if (e.target.innerText === '.' && decimalPresent){
             return;
         } else {
-            if (prevClass === 'divi' && e.target.innerText === '0') {
+            if (prevClass === 'divi' && e.target.innerText === '0' || prevClass === 'divi' && e.key === '0') {
                 clearCalc();
                 alert("Yeah no. You're done. No dividing by 0. (You're not about to crash my calculator)");
                 return;
             }
             console.log('Num pressed & have an operand');
-            if (!prevClass) {
-                bottomDiv.innerText = ''
+            if (!prevClass || prevClass === 'divi') {
+                bottomDiv.innerText = '';
             }
             bottomDiv.innerText += btnText;
         }}
 
     else if (operandPressed && prevOperand && id_ !== 'equals') {
         console.log('Operand Pressed & Previous Operand')
+        console.log(`This is num1 right before operand pressed & previous operand fxn: ${num1}`);
+         console.log(`This is num2 right before operand pressed & previous operand fxn: ${num2}`);
         // Set num2
         num2 = parseFloat(bottomDiv.innerText);
         result = calculation[prevOperand](num1, num2);
+        result = parseFloat(result.toFixed(5))
         topDiv.appendChild(document.createTextNode(`${num2} ${btnText} `));
         bottomDiv.innerText = result;
         num1 = result;
-        prevOperand = false;
         decimalPresent = false;
     }
 
@@ -128,35 +147,34 @@ function recordEvent(e) {
         // Set num2
         num2 = parseFloat(bottomDiv.innerText);
         // Do the function
-        if (id_ === 'equals') {
-            result = calculation[prevOperand](num1, num2);
-            topDiv.appendChild(document.createTextNode(`${bottomDiv.innerText} =`));
-            bottomDiv.innerText = '';
-            bottomDiv.innerText = result;
-        } 
-        decimalPresent = false;
+        result = calculation[prevOperand](num1, num2);
+        result = parseFloat(result.toFixed(5))
+        topDiv.appendChild(document.createTextNode(`${bottomDiv.innerText} = `));
+        bottomDiv.innerText = '';
+        bottomDiv.innerText = result;
+        // decimalPresent = false;
         prevEqual = true;
         num1 = result;
-    }
+        reset();
+        prevOperand = false;
+        }
 
     if (e.target.innerText === '.') {
         decimalPresent = true;
-        
+    }
+
+    prevClass = class_;
+    if (operand && operand !== 'equals') {
+        prevOperand = operand;
     }
 
     console.log(`This is num1: ${num1}`);
     console.log(`This is num2: ${num2}`);
     console.log(`This is the result: ${result}`)
     console.log(`This is the operand: ${operand}`);
-
-    prevClass = class_;
-    if (prevEqual) {
-        prevOperand = false;
-    } else {
-        prevOperand = operand;
-    }
-
+    console.log(`This is the previous operand: ${prevOperand}`)
     console.log(`This is prevClass: ${prevClass}`)
+    console.log('__________________________________________________');
 };
 
 // Clear Screen On Clear Btn Press
@@ -164,10 +182,17 @@ function clearCalc() {
     bottomDiv.innerText = '';
     topDiv.innerText = '';
     bottomDivText, operandSymbol = '';
-    num1, num2, result, operand = '';
-    operandPressed, num, prevOperand, decimalPresent. prevEqual = false;
+    num1, num2, result, operand = undefined; 
+    operandPressed, num, prevOperand, decimalPresent, prevEqual = false;
     prevClass = 'num';
 };
+
+function reset() {
+    num2 = undefined;
+    result, operand, operandSymbol = '';
+    operandPressed, num, prevOperand, decimalPresent = false;
+    prevClass = 'num';
+}
 
 function backspaceEvent() {
     if (bottomDiv.innerText.length > 0) {
@@ -179,9 +204,21 @@ function function1(e) {
     console.log(e);
 };
 
+function equalHandler(e) {
+    if (e.target.id === 'equals' && bottomDiv.innerText.length === 0 || e.key === 'Enter' && bottomDiv.innerText.length === 0) {
+        return;
+    } else if (e.target.id && bottomDiv.innerText.length === 0 || e.key === '+' && bottomDiv.innerText.length === 0 || e.key === '-' && bottomDiv.innerText.length === 0 || e.key === '*' && bottomDiv.innerText.length === 0 || e.key === '/' && bottomDiv.innerText.length === 0) {
+        // If prevOperand ==False
+        if (num1 === undefined && !prevOperand) {
+            return;
+        }
+    } else {
+        recordEvent(e); 
+    }
+};
+
 // Event Listeners
 clearBtn.addEventListener('click', clearCalc);
-calcBtns.addEventListener('click', recordEvent);
+calcBtns.addEventListener('click', equalHandler);
 backspaceBtn.addEventListener('click', backspaceEvent);
-document.addEventListener('keypress', recordEvent);
-document.addEventListener('keyup', function1);
+document.addEventListener('keyup', equalHandler);
