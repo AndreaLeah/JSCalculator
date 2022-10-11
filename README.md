@@ -12,5 +12,5 @@ Vanilla JS Calculator with CSS Grid and Flexbox. The calculator is responsive to
 
 **Attribution:**
 Geometrical icon created by Darius Dan, [source]("https://www.flaticon.com/free-icons/geometrical")
-Backspace icons created by elvnsands - Flaticon, [source]("https://www.flaticon.com/free-icons/backspace") 
-Calculator icons created by madness - Flaticon, [source]("https://www.flaticon.com/free-icons/calculator")
+Backspace icon created by elvnsands - Flaticon, [source]("https://www.flaticon.com/free-icons/backspace") 
+Calculator icon created by madness - Flaticon, [source]("https://www.flaticon.com/free-icons/calculator")
