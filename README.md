@@ -4,8 +4,6 @@ Vanilla JS Calculator with CSS Grid and Flexbox. The calculator is responsive to
 
 [Live Demo](https://andrealeah.github.io/JSCalculator/)
 
-<br>
-
 ![GIPHY Link](https://media.giphy.com/media/fwmNMhzauSpBdoFMTa/giphy.gif)
 
 <br>
